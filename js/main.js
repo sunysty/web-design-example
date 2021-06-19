@@ -13,18 +13,18 @@ for(let el of lists){
     let load = el.querySelector(".load");
 
     play.addEventListener("click", e =>{
-        e.currentTarget.parentElement.nextElementSibling.play();
-        e.currentTarget.parentElement.parentElement.previousElementSibling.classList.add("on");
+        e.currentTarget.parentElement.nextElementSibling.play();//해당타겟 .play의 audio로 가서 play메소드 실행
+        e.currentTarget.parentElement.parentElement.previousElementSibling.classList.add("on");//.pic에 on클래스를 추가(on은 .pic이 rotation하는 animation)
     });
 
     pause.addEventListener("click", e =>{
-        e.currentTarget.parentElement.nextElementSibling.pause();
-        e.currentTarget.parentElement.parentElement.previousElementSibling.classList.remove("on");
+        e.currentTarget.parentElement.nextElementSibling.pause();//해당타겟 .pause의 audio로 가서 pause메소드 실행
+        e.currentTarget.parentElement.parentElement.previousElementSibling.classList.remove("on");//.pic에 on클래스를 제거(.pic의 animation 제거)
     });
 
     load.addEventListener("click", e=>{
-        e.currentTarget.parentElement.nextElementSibling.load();
-        e.currentTarget.parentElement.nextElementSibling.remove();
-        e.currentTarget.parentElement.parentElement.previousElementSibling.classList.add("on");
-    });
+        e.currentTarget.parentElement.nextElementSibling.load();//해당타겟 .load의 audio로 가서 load메소드 실행
+        e.currentTarget.parentElement.nextElementSibling.play();//해당타겟 .load의 audio로 가서 play메소드 실행
+        e.currentTarget.parentElement.parentElement.previousElementSibling.classList.add("on");//.pic에 on클래스를 추가
+    });;
 }
