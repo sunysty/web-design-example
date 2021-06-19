@@ -1,7 +1,44 @@
 const frame = document.querySelector("section");
 const lists = frame.querySelectorAll("article");
-const deg = 45;
-let i = 0;
+const prev = document.querySelector(".btnPrev");
+const next = document.querySelector(".btnNext");
+const audio = frame.querySelectorAll("audio");
+
+const len = lists.length-1;
+
+let num = 0; //버튼 클릭시 회전각도 구하는 카운트
+let active = 0; //현재 활성화되어있는 article의 순번을 담을 변수
+const deg = 45; 
+let i = 0; //article 초기 각도 회전시킬때 쓰는 카운트
+
+//현재 선택된 article의 앨범사진을 rotation해줌
+function activation(index, lists){
+    for(let el of lists){
+        el.classList.remove("on");
+    }
+    lists[index].classList.add("on");
+}
+
+//prev클릭시 ++하면서 각도를 변경해줌
+prev.addEventListener("click", () => {
+    num++;
+    frame.style.transform = `rotate(${deg*num}deg)`;
+
+    (active == 0) ? active = len : active--;
+
+    activation(active, lists);
+});
+
+//next클릭시 -- 하면서 각도를 변경해줌
+next.addEventListener("click", () => {
+    num--;
+    frame.style.transform = `rotate(${deg*num}deg)`;
+
+    (active == len) ? active = 0  : active++;
+
+    activation(active, lists);
+})
+
 
 for(let el of lists){
     el.style.transform = `rotate(${45*i}deg) translateY(-100vh)`;
