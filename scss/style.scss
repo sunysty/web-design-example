@@ -75,7 +75,7 @@ a {
             .inner{
                 width: 100%;
                 height: 100%;
-                background: #dac50b;
+                background: #ceca99;
                 padding: 5vh 2.5vw 5vh;
                 display: flex;
                 flex-wrap: wrap;
@@ -121,9 +121,43 @@ a {
                         width: 3vw;
                         height: 3vw;
                         border-radius: 50%;
-                        background: yellow;
+                        background: #ceca99;
                         z-index: 2;
                         box-shadow: inset 5px 5px 10px rgba(0,0,0,0.1);
+                    }
+                }
+            
+                .txt {
+                    text-align: center;
+                    position: relative;
+                    z-index: 3;
+                    
+                    h2{
+                        font: bold 20px/1 'arial';
+                        color:#222;
+                        margin-bottom:2vh; 
+                    }
+
+                    p{
+                        font: 12px/1 'arial';
+                        color: #555;
+                        margin-bottom:2vh; 
+                    }
+
+                    ul{
+                        display: flex;
+                        justify-content: space-around;
+
+                        li{
+                            cursor: pointer;
+                            opacity: 0.6;
+                            transition: 0.5s;
+
+                            &.play{
+                                transform: scale(1.5);
+                                opacity:0.9;
+                            }
+                        }
                     }
                 }
             }
