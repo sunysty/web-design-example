@@ -5,7 +5,6 @@ const next = document.querySelector(".btnNext");
 const audio = frame.querySelectorAll("audio");
 
 const len = lists.length-1;
-
 let num = 0; //버튼 클릭시 회전각도 구하는 카운트
 let active = 0; //현재 활성화되어있는 article의 순번을 담을 변수
 const deg = 45; 
@@ -19,26 +18,35 @@ function activation(index, lists){
     lists[index].classList.add("on");
 }
 
-//prev클릭시 ++하면서 각도를 변경해줌
+function initMusic(){
+    for(let el of audio){
+        el.pause();
+        el.load();
+        el.parentElement.previousElementSibling.classList.remove("on");
+    }
+}
+
+//prev클릭시 --하면서 각도를 변경해줌
 prev.addEventListener("click", () => {
+    initMusic();
+
     num++;
     frame.style.transform = `rotate(${deg*num}deg)`;
 
-    (active == 0) ? active = len : active--;
-
+    (active == 0) ? active=len : active--;
     activation(active, lists);
 });
 
-//next클릭시 -- 하면서 각도를 변경해줌
+//next클릭시 ++ 하면서 각도를 변경해줌
 next.addEventListener("click", () => {
+    initMusic();
+    
     num--;
     frame.style.transform = `rotate(${deg*num}deg)`;
 
     (active == len) ? active = 0  : active++;
-
     activation(active, lists);
-})
-
+});
 
 for(let el of lists){
     el.style.transform = `rotate(${45*i}deg) translateY(-100vh)`;
@@ -64,4 +72,4 @@ for(let el of lists){
         e.currentTarget.parentElement.nextElementSibling.play();//해당타겟 .load의 audio로 가서 play메소드 실행
         e.currentTarget.parentElement.parentElement.previousElementSibling.classList.add("on");//.pic에 on클래스를 추가
     });;
-}
+};
