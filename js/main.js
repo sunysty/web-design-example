@@ -81,6 +81,6 @@ function initMusic(){
     for(let el of audio){
         el.pause();
         el.load();
-        el.previousElementSibling.classList.remove("on");
+        el.closest("article").querySelector(".pic").classList.remove("on");
     }
 }
