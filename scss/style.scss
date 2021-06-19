@@ -64,6 +64,8 @@ a {
         position:absolute;
         left:40%;
         top:120%;
+        transition:1s;
+        opacity:0.8;
 
         article{
             width:100%;
@@ -84,6 +86,8 @@ a {
                 border-radius: 10px;
                 box-shadow: 10px 10px 20px rgba(0,0,0,0.1);
                 transform: scale(0.8);
+                opacity:0.6;
+                transition: opacity 1s, transform 1s;
 
                 .pic{
                     width:15vw;
@@ -161,6 +165,16 @@ a {
                             &.play{
                                 transform: scale(1.5);
                                 opacity:0.9;
+                            }
+
+                            &:hover{
+                                transform: scale(1.5);
+                                opacity:0.9;
+
+                                &.play{
+                                    transform: scale(2);
+                                    opacity: 1;
+                                }
                             }
                         }
                     }
